@@ -1,0 +1,18 @@
+name: code-reviewer
+display_name: Code Reviewer
+description: "Automatically reviews pull requests for correctness, security, maintainability, and test coverage. Leaves inline comments on issues and approves clean merges."
+category: development
+
+connectors:
+  - catalog: github-mcp
+    description: "GitHub MCP server for reading PRs, diffs, files, and submitting reviews with inline comments"
+    slot_descriptions:
+      GITHUB_PERSONAL_ACCESS_TOKEN: "GitHub personal access token with repo scope"
+
+channels:
+  - catalog: github-webhook
+    description: "Receives pull request events from GitHub. Reviews the diff on opened, synchronize, and reopened actions."
+    events:
+      - pull_request
+    slot_descriptions:
+      GITHUB_WEBHOOK_SECRET: "Webhook secret for HMAC-SHA256 signature validation"
