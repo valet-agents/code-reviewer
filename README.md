@@ -14,7 +14,7 @@ Open a PR and Code Reviewer reads the diff, flags issues inline, and approves th
   <tr>
     <td colspan="2" align="center">
       <br />
-      <a href="https://dashboard.valet.dev/setup/configure?from=github.com/valet-agents/code-reviewer">
+      <a href="https://dashboard.valet.dev/deploy?from=github.com/valet-agents/code-reviewer">
         <img src="https://raw.githubusercontent.com/valet-agents/code-reviewer/main/.github/deploy-button.svg" alt="Deploy Agent →" height="40" />
       </a>
       <br /><br />
