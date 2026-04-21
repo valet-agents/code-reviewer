@@ -2,12 +2,34 @@ name: code-reviewer
 display_name: Code Reviewer
 description: "Automatically reviews pull requests for correctness, security, maintainability, and test coverage. Leaves inline comments on issues and approves clean merges."
 category: development
+author: Valet
+
+story:
+  hero: "An automatic first reviewer on every pull request."
+  subheadline: "Open a PR and Code Reviewer reads the diff, flags issues inline, and approves the clean ones — before a human opens it."
+  steps:
+    - role: trigger
+      title: "A PR is opened or updated."
+      body: "GitHub webhooks fire on open, sync, and reopen. Draft PRs get the same treatment as ready-for-review ones."
+      catalog: github-webhook
+    - role: action
+      title: "Code Reviewer reads the diff."
+      body: "Checks correctness, security, maintainability, and test coverage. Reads full files when context matters."
+      catalog: github-mcp
+    - role: outcome
+      title: "Inline comments — or an approve."
+      body: "Posts comments on exact lines with clear reasons. Approves when it's clean. No noise over style nitpicks."
+      catalog: github-mcp
 
 connectors:
   - catalog: github-mcp
     description: "GitHub MCP server for reading PRs, diffs, files, and submitting reviews with inline comments"
     slot_descriptions:
       GITHUB_PERSONAL_ACCESS_TOKEN: "GitHub personal access token with repo scope"
+    ui:
+      headline: "Give Code Reviewer a reviewer seat on your repo."
+      blurb: "A repo-scoped token is all it needs to read PRs, fetch full files, and post inline comments under its own GitHub identity."
+      done_note: "Connected to GitHub as your reviewer"
 
 channels:
   - catalog: github-webhook
@@ -16,3 +38,7 @@ channels:
       - pull_request
     slot_descriptions:
       GITHUB_WEBHOOK_SECRET: "Webhook secret for HMAC-SHA256 signature validation"
+    ui:
+      headline: "Wire up pull-request events."
+      blurb: "Point GitHub's pull_request webhook at Code Reviewer. It subscribes to opened, synchronize, and reopened — nothing else."
+      done_note: "Listening for pull_request events"
