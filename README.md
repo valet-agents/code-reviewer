@@ -1,6 +1,6 @@
 # Code Reviewer
 
-A [Valet](https://valet.dev) agent that reviews pull requests. Automatically checks for correctness, security, maintainability, and test coverage. Leaves inline comments on issues and approves clean merges.
+Open a PR and Code Reviewer reads the diff, flags issues inline, and approves the clean ones — before a human opens it.
 
 <table>
   <tr>
