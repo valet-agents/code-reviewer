@@ -4,6 +4,9 @@ description: "Automatically reviews pull requests for correctness, security, mai
 category: development
 author: Valet
 
+example:
+  prompt: "What's the status of my open PRs?"
+
 story:
   hero: "An automatic first reviewer on every pull request."
   subheadline: "Open a PR and Code Reviewer reads the diff, flags issues inline, and approves the clean ones — before a human opens it."
